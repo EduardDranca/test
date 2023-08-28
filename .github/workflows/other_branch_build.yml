@@ -1,0 +1,28 @@
+name: Other Branch Build
+on:
+    push:
+        branches: 
+            - 'other-branch'
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - name: 'create file'
+              run: |
+                FILE_NAME="file$(date)"
+                touch FILE_NAME
+            - name: 'commit to main branch'
+              run: |
+                git config --global user.name 'Eduard Dranca'
+                git config --global user.email 'EduardDranca'
+                git add FILE_NAME
+                git stash
+                git checkout main
+                git stash pop
+                git add FILE_NAME
+                git commit -m "Added new file to branch"
+                git push
+
+
+
