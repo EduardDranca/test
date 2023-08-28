@@ -14,6 +14,7 @@ jobs:
               run: |
                 FILE_NAME="file$(date)"
                 touch "$FILE_NAME"
+                echo "FILE_NAME=$FILE_NAME" >> $GITHUB_ENV
             - name: 'stash new file'
               run: |
                 git config --global user.name 'Eduard Dranca'
