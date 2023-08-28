@@ -27,6 +27,8 @@ jobs:
             - name: 'push changes to main'
               run: |
                 git stash pop
+                ls
+                echo $FILE_NAME
                 git add FILE_NAME
                 git commit -m "Added new file to branch"
                 git push
