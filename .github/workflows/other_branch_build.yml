@@ -13,12 +13,12 @@ jobs:
             - name: 'create file'
               run: |
                 FILE_NAME="file$(date)"
-                touch FILE_NAME
+                touch "$FILE_NAME"
             - name: 'stash new file'
               run: |
                 git config --global user.name 'Eduard Dranca'
                 git config --global user.email 'EduardDranca'
-                git add FILE_NAME
+                git add "$FILE_NAME"
                 git stash
             - name: 'checkout main'
               uses: actions/checkout@v3
@@ -29,7 +29,7 @@ jobs:
                 git stash pop
                 ls
                 echo $FILE_NAME
-                git add FILE_NAME
+                git add "$FILE_NAME"
                 git commit -m "Added new file to branch"
                 git push
                 
